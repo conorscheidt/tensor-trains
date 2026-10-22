@@ -1,0 +1,32 @@
+[project]
+name = "tensor-trains"
+version = "1.0.0"
+description = "Tensor-train integration against Monte Carlo and quasi-Monte Carlo for multi-asset option pricing"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = ["numpy>=2.1", "scipy>=1.14"]
+
+[dependency-groups]
+dev = ["pytest>=8", "mypy>=1.13", "ruff>=0.8", "scipy-stubs>=1.14"]
+crosscheck = ["teneva>=0.14"]
+
+[tool.uv]
+package = false
+default-groups = ["dev"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.mypy]
+strict = true
+files = ["ttlib.py", "basket.py", "run_pricing.py", "tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "N", "SIM", "RUF", "NPY", "PL"]
+ignore = ["PLR0913", "PLR2004", "N806", "N803", "E741"]
