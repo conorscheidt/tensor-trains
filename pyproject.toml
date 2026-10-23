@@ -21,7 +21,11 @@ pythonpath = ["."]
 
 [tool.mypy]
 strict = true
-files = ["ttlib.py", "basket.py", "run_pricing.py", "tests"]
+files = ["ttlib.py", "basket.py", "run_pricing.py", "crosscheck_teneva.py", "tests"]
+
+[[tool.mypy.overrides]]
+module = ["teneva"]  # untyped, and installed only with the crosscheck group
+ignore_missing_imports = true
 
 [tool.ruff]
 line-length = 120
